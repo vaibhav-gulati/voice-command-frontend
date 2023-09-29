@@ -1,38 +1,62 @@
-.App {
+/* VoiceInput.css */
+.voice-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.voice-input-content {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.voice-input-button {
+  background-color: #007BFF;
   color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.voice-input-button.recording {
+  background-color: #DC3545;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.voice-pulse {
+  width: 10px;
+  height: 10px;
+  background-color: #007BFF;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 15px;
+  left: calc(50% - 5px);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.pulse-animation {
+  animation: pulse 1s infinite;
+  opacity: 1;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.5);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
   }
 }
