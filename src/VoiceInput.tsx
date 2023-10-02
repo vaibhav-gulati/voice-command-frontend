@@ -5,8 +5,23 @@ import './App.css';
 const VoiceInput: React.FC = () => {
   const [audioData, setAudioData] = useState<string | null>(null);
   const [isRecording, setIsRecording] = useState(false);
-  const [displayBoxes, setDisplayBoxes] = useState<string[]>([]); 
+  const [displayBoxes, setDisplayBoxes] = useState<string[]>([]);
   const recognition = new (window.SpeechRecognition || (window as any).webkitSpeechRecognition)();
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    document.body.className = `${newTheme}-theme`;
+  };
+
+  const addBox = (color: string) => {
+    setDisplayBoxes(prevBoxes => [...prevBoxes, color]);
+  };
+
+  const removeBox = (color: string) => {
+    setDisplayBoxes(prevBoxes => prevBoxes.filter(boxColor => boxColor !== color));
+  };
 
   recognition.onstart = () => {
     console.log('Listening...');
@@ -24,7 +39,17 @@ const VoiceInput: React.FC = () => {
 
       if (response.command.startsWith('addBox(') && response.command.endsWith(')')) {
         const color = response.command.substring(8, response.command.length - 2);
-        setDisplayBoxes(prevBoxes => [...prevBoxes, color]);
+        addBox(color);
+      }
+      else if (response.command.startsWith('removeBox(') && response.command.endsWith(')')) {
+        const color = response.command.substring(11, response.command.length - 2);
+        removeBox(color);
+      }
+      else if (response.command === 'toggleTheme') {
+        toggleTheme();
+      }
+      else if (response.command === 'clearUI()') {
+        setDisplayBoxes([]);
       }
       
     } else {
@@ -55,7 +80,7 @@ const VoiceInput: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={`${theme}-theme`}>
       <div className="voice-input-container">
         <div className="voice-input-content">
           <h1>Voice Command Interface</h1>
