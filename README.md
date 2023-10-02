@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Voice Commands it can execute
+1. Add red color box(other colors will also work)
+2. remove red color(you can name other colors also but those colors boxes should exist on screen)
+3. clear the UI( to clear the entire canvas...sets the ui to default)
+
 ## Available Scripts
 
 In the project directory, you can run:
