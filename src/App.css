@@ -1,9 +1,8 @@
-/* VoiceInput.css */
+
 .voice-input-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   text-align: center;
 }
 
@@ -60,3 +59,30 @@
     opacity: 0;
   }
 }
+.box-container{
+  display: flex;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: transparent; 
+  margin-top: 20px; 
+  border: 2px solid black; 
+  transition: background-color 0.3s ease-in-out; 
+}
+
+
+.box.blue {
+  background-color: blue;
+}
+
+
+.box.yellow {
+  background-color: yellow;
+}
+
+.box.green {
+  background-color: green;
+}
+
