@@ -86,13 +86,11 @@
   background-color: green;
 }
 .light-theme {
-  /* Define styles for the light theme here */
   background-color: white;
   color: black;
 }
 
 .dark-theme {
-  /* Define styles for the dark theme here */
   background-color: black;
   color: white;
 }
